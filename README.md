@@ -18,17 +18,17 @@ src/
 │   └── ...
 └── ...
 ```
-The components/ directory contains reusable React components, the pages/ directory contains the Next.js pages, and the styles/ directory contains global styles. The utils/ directory contains utility functions, including a db.js file for connecting to the MySQL database.
+The components/ directory contains reusable React components, the pages/ directory contains the Next.js pages, and the styles/ directory contains global styles. The utils/ directory contains utility functions, including a ```db.js``` file for connecting to the MySQL database.
 
 ### Installation
 To install the project, follow these steps:
 
-Clone the repository: git clone https://github.com/tausif-fardin/DynamicMenu.git.
-Navigate to the project directory: cd project-name.
-Install the dependencies: npm install.
-Set up the MySQL database by running the SQL file located in utils/db.sql.
-Create a .env.local file in the root directory of the project and add the following variables:
-makefile
+Clone the repository: ```git clone https://github.com/tausif-fardin/DynamicMenu.git```.
+Navigate to the project directory: ```cd project-name```.
+Install the dependencies:```npm install```.
+Set up the MySQL database by running the SQL file located in ```utils/db.sql```.
+Create a ```.env.local``` file in the root directory of the project and add the following variables:
+#### makefile
 ```bash
 DB_HOST=localhost
 DB_USER=your-username
