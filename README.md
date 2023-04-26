@@ -22,12 +22,12 @@ The components/ directory contains reusable React components, the pages/ directo
 
 ### Installation
 To install the project, follow these steps:
-
-Clone the repository: ```git clone https://github.com/tausif-fardin/DynamicMenu.git```.
-Navigate to the project directory: ```cd project-name```.
-Install the dependencies:```npm install```.
-Set up the MySQL database by running the SQL file located in ```utils/db.sql```.
-Create a ```.env.local``` file in the root directory of the project and add the following variables:
+<br />
+Clone the repository: ```git clone https://github.com/tausif-fardin/DynamicMenu.git```.<br />
+Navigate to the project directory: ```cd project-name```.<br />
+Install the dependencies:```npm install```.<br />
+Set up the MySQL database by importing the SQL file located in ```utils/db.sql```.<br />
+Create a ```.env.local``` file in the root directory of the project and add the following variables:<br />
 #### makefile
 ```bash
 DB_HOST=localhost
