@@ -8,32 +8,46 @@ export default async function handler(req, res) {
     LEFT JOIN submenus ON menus.id = submenus.menuid
     ORDER BY menus.id, submenus.id
   `;
-  connection.query(query, (error, results, fields) => {
+  connection.query(query, (error, results) => {
     if (error) {
-      console.log(error);
-      res.status(500).json({ msg: 'Error occurred while fetching' });
-    } else {
-      const menus = [];
-      let currentMenu = null;
-      for (const row of results) {
-        if (row.menu_id !== currentMenu?.id) {
-          currentMenu = {
-            id: row.menu_id,
-            name: row.menu_name,
-            url: row.menu_url,
-            submenus: [],
-          };
-          menus.push(currentMenu);
-        }
-        if (row.submenu_id) {
-          currentMenu.submenus.push({
-            id: row.submenu_id,
-            name: row.submenu_name,
-            url: row.submenu_url,
-          });
-        }
-      }
-      res.status(200).json({ data: menus });
+      console.error(error);
+      return res
+        .status(500)
+        .json({ msg: 'Error occurred while retrieving data from database' });
     }
+
+    const menus = [];
+    let currentMenu = null;
+
+    for (const row of results) {
+      const {
+        menu_id,
+        menu_name,
+        menu_url,
+        submenu_id,
+        submenu_name,
+        submenu_url,
+      } = row;
+
+      if (!currentMenu || menu_id !== currentMenu.id) {
+        currentMenu = {
+          id: menu_id,
+          name: menu_name,
+          url: menu_url,
+          submenus: [],
+        };
+        menus.push(currentMenu);
+      }
+
+      if (submenu_id) {
+        currentMenu.submenus.push({
+          id: submenu_id,
+          name: submenu_name,
+          url: submenu_url,
+        });
+      }
+    }
+
+    return res.status(200).json({ data: menus });
   });
 }
